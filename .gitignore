@@ -1,0 +1,15 @@
+!.keep
+*.bak
+*.bkp
+*.DS_Store
+*.swp
+*~
+._*
+
+.directory
+.env
+.Spotlight-V100
+.Trashes
+
+log/*
+tmp/*
