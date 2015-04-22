@@ -29,6 +29,23 @@ RSpec.describe VigenereCipher do
           expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
         end
       end
+
+      context 'Incorrect key format' do
+        it 'encodes text with an upcase key' do
+          text, key = 'password', 'VIGENERE'
+          expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
+        end
+
+        it 'encodes text with spaces with a key' do
+          text, key = 'password', '  vi gen ere '
+          expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
+        end
+
+        # it 'encodes text with spaces and upcase text with a key' do
+        #   text, key = ' paSs  WoR d  ', 'vigenere'
+        #   expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
+        # end
+      end
     end
   end
 end
