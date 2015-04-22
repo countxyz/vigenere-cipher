@@ -5,9 +5,24 @@ RSpec.describe VigenereCipher do
   describe 'Encoding' do
 
     describe 'Correct text and key format' do
-      it 'encodes text with a key' do
-        text, key = 'password', 'vigenere'
-        expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
+
+      context 'Key length size same as text size' do
+        it 'encodes text with a key' do
+          text, key = 'password', 'vigenere'
+          expect((VigenereCipher.new text, key).encode).to eq 'kiywjsih'
+        end
+      end
+
+      context 'Key length size not the same as text size' do
+        it 'encodes text with a short key' do
+          text, key = 'password', 'vig'
+          expect((VigenereCipher.new text, key).encode).to eq 'kiyneuml'
+        end
+
+        it 'encodes text with a longer key' do
+          text, key = 'pass', 'vigenere'
+          expect((VigenereCipher.new text, key).encode).to eq 'kiyw'
+        end
       end
     end
 
