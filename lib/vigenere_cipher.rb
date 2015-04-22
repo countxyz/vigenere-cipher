@@ -1,11 +1,17 @@
 class VigenereCipher
 
   def initialize text, key
-    @text     = text.to_s
+    @text     = text_format text
     @key      = key.to_s
     @alphabet = ('a'..'z').to_a
     @shifts ||= []
     @result ||= []
+    # p @text
+  end
+
+  def text_format text
+    text_downcase = text.downcase
+    text          = text_downcase.gsub(' ', '')
   end
 
   def encode
